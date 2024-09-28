@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Empresa - Página de Negocios Moderna</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
+</head>
+<body class="min-h-screen transition-colors duration-500">
+  <div class="gradient-bg"></div>
+  <nav class="p-4 flex justify-between items-center backdrop-blur-md bg-white/10 dark:bg-black/10 relative z-10">
+      <h1 class="text-2xl font-bold">Mi Empresa</h1>
+      <div class="flex items-center space-x-4">
+          <button id="cartButton" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+          </button>
+          <button id="themeToggle" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+          </button>
+      </div>
+  </nav>
+
+  <section id="welcome" class="container mx-auto px-4 py-20 text-center opacity-0 relative z-10">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">Bienvenido a la Innovación</h2>
+      <p class="text-xl mb-8 opacity-80">Transformando el futuro, un proyecto a la vez</p>
+      <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors">
+          Descubre Más
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+      </button>
+  </section>
+
+  <section id="products" class="container mx-auto px-4 py-20 opacity-0 relative z-10">
+      <h2 class="text-3xl font-bold mb-10 text-center">Nuestros Productos</h2>
+      <div class="mb-8">
+          <input type="text" id="searchInput" placeholder="Buscar productos..." class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div id="productGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="product-card backdrop-blur-lg bg-white/10 dark:bg-black/10 rounded-lg p-6 shadow-lg">
+              <div class="flex items-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold">Producto A</h3>
+              </div>
+              <p class="text-gray-300 mb-4">Innovación de vanguardia</p>
+              <p class="mb-4">Características impresionantes que transformarán su negocio.</p>
+              <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors">Añadir al carrito</button>
+          </div>
+          <div class="product-card backdrop-blur-lg bg-white/10 dark:bg-black/10 rounded-lg p-6 shadow-lg">
+              <div class="flex items-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                  <h3 class="text-xl font-semibold">Producto B</h3>
+              </div>
+              <p class="text-gray-300 mb-4">Solución empresarial integral</p>
+              <p class="mb-4">Características impresionantes que transformarán su negocio.</p>
+              <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors">Añadir al carrito</button>
+          </div>
+          <div class="product-card backdrop-blur-lg bg-white/10 dark:bg-black/10 rounded-lg p-6 shadow-lg">
+              <div class="flex items-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold">Producto C</h3>
+              </div>
+              <p class="text-gray-300 mb-4">Tecnología del futuro</p>
+              <p class="mb-4">Características impresionantes que transformarán su negocio.</p>
+              <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors">Añadir al carrito</button>
+          </div>
+      </div>
+  </section>
+
+  <section id="news" class="container mx-auto px-4 py-20 opacity-0 relative z-10">
+    <h2 class="text-3xl font-bold mb-10 text-center">Novedades de la Empresa</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="backdrop-blur-lg bg-white/10 dark:bg-black/10 p-8 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-4">Nuevo Lanzamiento</h3>
+        <p class="mb-4">Estamos emocionados de anunciar el lanzamiento de nuestro último producto innovador que revolucionará la industria.</p>
+        <a href="#" class="text-blue-500 hover:underline">Leer más</a>
+      </div>
+      <div class="backdrop-blur-lg bg-white/10 dark:bg-black/10 p-8 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-4">Expansión Global</h3>
+        <p class="mb-4">Nuestra empresa está expandiendo sus operaciones a nuevos mercados internacionales, abriendo oficinas en tres nuevos países.</p>
+        <a href="#" class="text-blue-500 hover:underline">Leer más</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container mx-auto px-4 py-20 opacity-0 relative z-10">
+      <h2 class="text-3xl font-bold mb-10 text-center">Sobre Nosotros</h2>
+      <div class="backdrop-blur-lg bg-white/10 dark:bg-black/10 p-8 rounded-lg shadow-lg">
+          <p class="text-lg mb-4">
+              Somos una empresa líder en innovación, dedicada a crear soluciones que impulsan el futuro de los negocios.
+          </p>
+          <p class="text-lg mb-4">
+              Con un equipo de expertos apasionados y tecnología de vanguardia, estamos transformando industrias y mejorando vidas.
+          </p>
+          <button class="mt-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold py-2 px-4 rounded transition-colors">
+              Conócenos Mejor
+          </button>
+      </div>
+  </section>
+
+  <section id="contact" class="container mx-auto px-4 py-20 opacity-0 relative z-10">
+    <h2 class="text-3xl font-bold mb-10 text-center">Contacto</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="backdrop-blur-lg bg-white/10 dark:bg-black/10 p-8 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <h3 class="text-2xl font-bold mb-6 text-blue-500 dark:text-blue-400">Información de Contacto</h3>
+        <div class="space-y-4">
+          <p class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span><strong>Dirección:</strong> Calle Principal 123, Ciudad, País</span>
+          </p>
+          <p class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <span><strong>Teléfono:</strong> +1 234 567 890</span>
+          </p>
+          <p class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span><strong>Email:</strong> info@miempresa.com</span>
+          </p>
+        </div>
+        <h4 class="text-xl font-bold mt-6 mb-4 text-blue-500 dark:text-blue-400">Sedes</h4>
+        <ul class="list-disc list-inside space-y-2">
+          <li>Ciudad A</li>
+          <li>Ciudad B</li>
+          <li>Ciudad C</li>
+        </ul>
+      </div>
+      <div id="map" class="h-64 md:h-auto rounded-lg shadow-lg"></div>
+    </div>
+  </section>
+
+  <section id="questionnaire" class="fixed bottom-4 right-4 z-20">
+      <button id="openQuestionnaire" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-colors">
+          Cuestionario
+      </button>
+      <div id="questionnaireModal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center">
+          <div class="bg-gradient-to-br from-blue-400 to-purple-500 p-8 rounded-lg shadow-2xl max-w-md w-full">
+              <h3 class="text-2xl font-bold mb-4 text-white">Cuestionario del Cliente</h3>
+              <form id="questionnaireForm" class="space-y-4">
+                  <div>
+                      <label for="name" class="block text-sm font-medium text-white">Nombre</label>
+                      <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md bg-white/20 border-transparent focus:border-blue-500 focus:bg-white focus:ring-0 text-white placeholder-gray-300">
+                  </div>
+                  <div>
+                      <label for="email" class="block text-sm font-medium text-white">Email</label>
+                      <input type="email" id="email" name="email" required class="mt-1 block w-full rounded-md bg-white/20 border-transparent focus:border-blue-500 focus:bg-white focus:ring-0 text-white placeholder-gray-300">
+                  </div>
+                  <div>
+                      <label for="interest" class="block text-sm font-medium text-white">Interés Principal</label>
+                      <select id="interest" name="interest" required class="mt-1 block w-full rounded-md bg-white/20 border-transparent focus:border-blue-500 focus:bg-white focus:ring-0 text-white">
+                          <option value="">Seleccione una opción</option>
+                          <option value="producto-a">Producto A</option>
+                          <option value="producto-b">Producto B</option>
+                          <option value="producto-c">Producto C</option>
+                      </select>
+                  </div>
+                  <div>
+                      <label for="message" class="block text-sm font-medium text-white">Mensaje</label>
+                      <textarea id="message" name="message" rows="3" class="mt-1 block w-full rounded-md bg-white/20 border-transparent focus:border-blue-500 focus:bg-white focus:ring-0 text-white placeholder-gray-300"></textarea>
+                  </div>
+                  <div class="flex justify-end space-x-2">
+                      <button type="button" id="closeQuestionnaire" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition-colors">
+                          Cerrar
+                      </button>
+                      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                          Enviar
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </section>
+
+  <div id="cart" class="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 p-4 transform translate-x-full transition-transform duration-300 ease-in-out shadow-lg z-50">
+      <h3 class="text-xl font-bold mb-4">Carrito de Compras</h3>
+      <ul id="cartItems" class="mb-4"></ul>
+      <p id="cartTotal" class="font-bold"></p>
+      <button id="checkoutButton" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full transition-colors">
+          Realizar Pedido
+      </button>
+  </div>
+
+  <footer class="backdrop-blur-md bg-white/10 dark:bg-black/10 py-8 mt-20 relative z-10">
+      <div class="container mx-auto px-4 text-center">
+          <p>&copy; 2024 Mi Empresa. Todos los derechos reservados.</p>
+      </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
